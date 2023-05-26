@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FakeGPT</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+
+  </head>
+
+  <body class="layout-top-nav">
+    <div class="wrapper">
+      <%= render partial: 'layouts/essentials/welcome_top_navbar' %>
+      <div class="content-wrapper px-4 py-2">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

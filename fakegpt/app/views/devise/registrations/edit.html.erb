@@ -1,0 +1,75 @@
+<div class="register-box" style="margin:auto">
+  <div class="register-logo">
+
+    <h1 class="text-center display-6"><%= t('devise.registrations.edit.update') %></h1>
+  </div>
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="register-box-msg"> <%= t('devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it') %></p>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+                   html: { method: :put, id: "registro_usuario-form-edit" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="input-group mb-3">
+          <%= f.email_field :email, placeholder: t('activerecord.attributes.user.email'), class: "form-control", autofocus: true, autocomplete: "email" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div><%= t('devise.registrations.edit.currently_waiting_confirmation_for_email', :email => resource.unconfirmed_email) %></div>
+        <% end %>
+
+        <% if @minimum_password_length %>
+          <em><%= t('devise.shared.minimum_password_length', :count => @minimum_password_length) %></em><br/>
+        <% end %>
+        <div class="input-group mb-3">
+          <%= f.password_field :password, class: "form-control", placeholder: t('devise.passwords.edit.new_password'), autocomplete: "new-password" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= f.password_field :password_confirmation, class: "form-control", placeholder: t('devise.passwords.edit.confirm_new_password'), autocomplete: "new-password" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        <em><%= t('devise.registrations.edit.we_need_your_current_password_to_confirm_your_changes') %></em>
+        <div class="input-group mb-3">
+          <%= f.password_field :current_password, class: "form-control", placeholder: t('activerecord.attributes.user.current_password'), autocomplete: "current-password" %>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center">
+          <div class="actions">
+            <%= f.submit t('devise.registrations.edit.update'), class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+      <br>
+      <div>
+        <br>
+        <p><%= t('devise.registrations.edit.unhappy') %></p>
+        <p><%= button_to "Cancelar a conta", registration_path(resource_name), data: { confirm: "Têm certeza?" }, method: :delete, class: "btn btn-primary" %></p></p>
+
+        <%= link_to t('devise.shared.links.back'), :back %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

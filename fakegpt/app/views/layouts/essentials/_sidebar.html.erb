@@ -1,0 +1,68 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <%= link_to home_path, class: 'brand-link text-center' do %>
+    <b><span class="brand-text font-weight-light">FakeGPT</span></b>
+  <% end %>
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3">
+      <div class="d-flex">
+        <div class="image">
+          <img src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png"
+               class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block"><%= current_user.email.split('@')[0] %></a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-globe"></i>
+            <p>
+              Chats
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+          <li class="nav-item active">
+            <%= link_to new_chat_path,
+              class: "nav-link active" do %>
+              <i class="nav-icon far fa-plus-square"></i>
+              <p>Novo Chat</p>
+            <% end %>
+          </li>
+          <% current_user.chats&.each do |chat| %>
+            <li class="nav-item">
+              <%= link_to chat,
+                class: "nav-link" do %>
+                <i class="nav-icon far fa-comments"></i>
+                <p><%= chat.title %></p>
+              <% end %>
+            </li>
+          <% end %>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Meus Dados
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item active">
+              <%= link_to edit_user_registration_path,
+                class: "nav-link active" do %>
+                <i class="nav-icon fas fa-address-card"></i>
+                <p>Dados Pessoais</p>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

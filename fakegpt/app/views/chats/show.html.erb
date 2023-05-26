@@ -1,0 +1,172 @@
+<head>
+<style>
+
+body {
+  background: #343541;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: Inter, sans-serif;
+}
+
+.main-container {
+  grid-row: 1;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  width: 45em;
+    
+}
+
+.container > h2 {
+  color: white;
+  text-align: center;
+}
+
+.card-box {
+  display: flex;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+
+.card-box > div > h4 {
+  text-align: center;
+  margin-bottom: 5%;
+  color: white;
+}
+
+.card {
+  text-align: center;
+  background-color: #3E3F4B;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  height: 100%;
+  width: 190px;
+  padding: 25px;
+  margin-bottom: 15px;
+}
+
+.card > p {
+  margin: auto;
+}
+
+.hv:hover {
+  cursor: pointer;
+  background-color: #202123;
+}
+
+.side-button {
+  width:90%;
+  text-align: left;
+  line-height: 28px;
+  color: white;
+  padding: 10px 10% 10px 10%;
+  outline: 1;
+  border-radius: 6px;
+  border: 1px solid #d5d9d9;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  background-color: transparent;
+  margin: 10px 5% 0 5%;
+}
+
+form {
+  width: 100%;
+  background: #40414F;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 5px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 100px;
+  bottom: 0;
+}
+
+input[type=text] {
+  color: white;
+  background: transparent;
+  width: 100%;
+  padding: 15px 0 15px 5px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+button {
+  outline: 0;
+  border: 0;
+  margin-right: 10px;
+  background-color: transparent;
+}
+
+</style>
+</head>
+
+<div class='card-body bg-dark rounded'>
+  <div class="row">
+    <div class='col-md-4 col-sm-4' >
+      <h5>title: <%= @chat.title %></h5>
+    </div>
+  </div>
+  <div class="container">
+    <h2>Chat GPFAKE</h2>
+    <div class="card-box">
+      <div>
+        <h4>Examples</h4>
+        <div class="card hv">
+          <p>Explain quantum computing in simple terms" →</p>
+        </div>
+        <div class="card hv">
+          <p>Got any creative ideas for a 10 year old's birthday?" →</p>
+        </div>
+        <div class="card hv">
+          <p>How do I make an HTTP request in Javascript?" →</p>
+        </div>
+      </div>
+      <div>
+        <h4>Capabilities</h4>
+        <div class="card">
+          <p>Remembers what user said earlier in the conversation</p>
+        </div>
+        <div class="card">
+          <p>Allows user to provide follow-up corrections</p>
+        </div>
+        <div class="card">
+          <p>Trained to decline inappropriate requests</p>
+        </div>
+      </div>
+      <div>
+        <h4>Limitations</h4>
+        <div class="card">
+          <p>May occasionally generate incorrect information</p>
+        </div>
+        <div class="card">
+          <p>May occasionally produce harmful instructions or biased content</p>
+        </div>
+        <div class="card">
+          <p>Limited knowledge of world and events after 2021</p>
+        </div>
+      </div>
+    </div>
+    <form>
+      <input type="text" placeholder="Send a message">
+      <button>>></button>
+    </form>
+  </div>  
+</div>
+
+
+<%= link_to 'Edit', edit_chat_path(@chat) %> |
+<%= link_to 'Back', home_path %>
