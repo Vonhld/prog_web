@@ -15,8 +15,6 @@
       </div>
     </div>
 
-
-    <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
         <li class="nav-item">
@@ -35,11 +33,14 @@
             <% end %>
           </li>
           <% current_user.chats&.each do |chat| %>
-            <li class="nav-item">
+            <li class="nav-item row ">
               <%= link_to chat,
-                class: "nav-link" do %>
+                class: "nav-link col-9" do %>
                 <i class="nav-icon far fa-comments"></i>
                 <p><%= chat.title %></p>
+              <% end %>
+              <%= link_to chat, method: :delete, class: "nav-link col-3 text-center" do %>
+                <i class="fas fa-trash-alt" style="color:#eb344c"></i>
               <% end %>
             </li>
           <% end %>
@@ -62,6 +63,25 @@
             </li>
           </ul>
         </li>
+        <% if can? :users, :admin  %>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa-solid fa-user-secret"></i>
+            <p>
+              Admin
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item active">
+              <%= link_to admin_users_path,
+                class: "nav-link active" do %>
+                <i class="nav-icon fa-regular fa-address-book"></i>
+                <p>Usuários</p>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+        <% end %>
       </ul>
     </nav>
   </div>

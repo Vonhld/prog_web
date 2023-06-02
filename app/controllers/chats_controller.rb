@@ -1,6 +1,6 @@
 class ChatsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_chat, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
 
   # GET /chats or /chats.json
 
@@ -24,7 +24,8 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       if @chat.save
-        format.html { redirect_to chat_url(@chat), notice: "Chat was successfully created." }
+        flash[:success] = 'Chat criado com sucesso!'
+        format.html { redirect_to chat_url(@chat) }
         format.json { render :show, status: :created, location: @chat }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,7 +38,8 @@ class ChatsController < ApplicationController
   def update
     respond_to do |format|
       if @chat.update(chat_params)
-        format.html { redirect_to chat_url(@chat), notice: "Chat was successfully updated." }
+        flash[:success] = 'Chat alterado com sucesso!'
+        format.html { redirect_to chat_url(@chat) }
         format.json { render :show, status: :ok, location: @chat }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +53,8 @@ class ChatsController < ApplicationController
     @chat.destroy
 
     respond_to do |format|
-      format.html { redirect_to chats_url, notice: "Chat was successfully destroyed." }
+      flash[:success] = 'Chat excluído com sucesso!'
+      format.html { redirect_to home_path }
       format.json { head :no_content }
     end
   end

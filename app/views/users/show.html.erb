@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row p-2">
+    <div class="col">
+      <h1 class="text-center align-middle display-6">Usuario</h1>
+    </div>
+  </div>
+
+  <div class="row p-2">
+    <div class="card card-outline col-12">
+      <div class="card-body">
+
+        <h6 class="text-left"><i class="fas fa-map-marked-alt"></i> Dados pessoais</h6>
+        <hr class="mb-2"/>
+
+        <dl class="row">
+          <dt class="col-sm-4">Email:</dt>
+          <dd class="col-sm-8"><%= @user.email %></dd>
+
+          <dt class="col-sm-4">Admin:</dt>
+          <dd class="col-sm-8"><%= @user.admin %></dd>
+        </dl>
+
+        <h6 class="text-left"><i class="fas fa-map-marked-alt"></i> Chats</h6>
+        <hr class="mb-2"/>
+
+        <dl class="row">
+          <dt class="col-sm-4">Chats:</dt>
+          <dd class="col-sm-8"><%= @user.chats.pluck(:title).join(', ') %></dd>
+        </dl>
+            
+        <div class="card-footer text-center">
+          <%= link_to '<i class="fas fa-trash-alt"></i> Excluir'.html_safe, registration_path(@user), data: { confirm: "Têm certeza?" }, method: :delete, class: "btn btn-danger" %>
+        </div>
+        <br/>
+        <div class="row ml-1 mb-1">
+            <%= link_to 'Voltar', admin_users_path, class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

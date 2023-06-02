@@ -1,0 +1,27 @@
+<h1>Usuários</h1>
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Email</th>
+      <th>Chats</th>
+      <th>Admin</th>
+      <th class='col-3' colspan="2">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |usuario| %>
+      <tr>
+        <td><%= usuario.email %></td>
+        <td><%= usuario.chats.count %></td>
+        <td><%= usuario.admin %></td>
+        <td><%= link_to '<i class="fas fa-eye"></i> Exibir'.html_safe, user_path(usuario), class: "btn btn-info" %></td>
+        <td><%= link_to '<i class="fas fa-trash-alt"></i> Excluir'.html_safe, registration_path(usuario), data: { confirm: "Têm certeza?" }, method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class='d-flex justify-content-center'>
+  <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
