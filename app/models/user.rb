@@ -13,9 +13,10 @@ class User < ApplicationRecord
     user = User.where(email: data['email']).first
 
     unless user
-      user = User.create(
+      user = User.create!(
         email: data['email'],
-        password: Devise.friendly_token[0,20]
+        password: Devise.friendly_token[0,20],
+        profile_img: access_token.info.image
       )
     end
     user
