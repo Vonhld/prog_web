@@ -1,0 +1,16 @@
+<div class="cont-<%= message.chat.user.id %>">
+  <% unless message.flag %>
+    <div class="message-box msg-<%= message.chat.user.id %>" >
+    <div class=" d-flex align-items-center">
+      <h6 class="name"> <%= message.chat.user.email %> </h6>
+    </div>
+  <% else %>
+    <div class="message-box-bot" style="background:#007bff" >
+    <div class="d-flex justify-content-end">
+      <h6 class="name"> FakeGPT </h6>
+    </div>
+  <% end %>
+      <%= message.body %>
+    </div>
+</div>
+

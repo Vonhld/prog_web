@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_23_014120) do
+ActiveRecord::Schema.define(version: 2023_07_09_225725) do
 
   create_table "chats", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2023_06_23_014120) do
     t.bigint "chat_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "flag", default: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 

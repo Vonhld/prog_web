@@ -1,0 +1,11 @@
+<div class="form-group msg-form">
+  <%= form_tag({controller: 'messages', action: 'new', remote: true, class: "d-flex"}) do %>
+    <%= hidden_field_tag :chat_id, @chat.id %>
+    <div class='row justify-content-center'>
+      <%= text_field :body, nil, id: 'chat-text', class: "form-control msg-content col-10", autocomplete: 'off', autofocus: true %>
+      <%= button_tag(type: 'submit', data: { disable_with: false }, class: "btn btn-primary col-1") do %>
+        <i class="fas fa-greater-than"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>

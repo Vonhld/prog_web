@@ -24,7 +24,6 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       if @chat.save
-        flash[:success] = 'Chat criado com sucesso!'
         format.html { redirect_to chat_url(@chat) }
         format.json { render :show, status: :created, location: @chat }
       else
@@ -56,6 +55,14 @@ class ChatsController < ApplicationController
       flash[:success] = 'Chat excluído com sucesso!'
       format.html { redirect_to home_path }
       format.json { head :no_content }
+    end
+  end
+
+  def new_message
+    @message = Message.new(chat_id: params[:chat_id], body: params[:body][0])
+    @message.save
+    respond_to do |format|
+      format.html {  redirect_to chat_path(Chat.find(params[:chat_id])) }
     end
   end
 

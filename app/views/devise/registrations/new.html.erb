@@ -3,7 +3,7 @@
     <a href="/"><b><%= t('devise.registrations.new.sign_up', :resource => resource_name.to_s.humanize) %></b></a>
   </div>
   <div class="card">
-    <div class="card-body register-card-body">
+    <div class="card-body register-card-body" style="border-radius: 40px">
       <p class="register-box-msg"><%= t('devise.registrations.new.fill') %></p>
 
       <%= form_for(resource, as: resource_name,html: {id:"registro_usuario-form"}, url: registration_path(resource_name)) do |f| %>
